@@ -2,7 +2,6 @@ pandas
 numpy
 streamlit
 tensorflow
-collections
 math
 string
 random
