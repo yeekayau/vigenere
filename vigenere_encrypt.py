@@ -41,6 +41,7 @@ def vigenere_encrypt(plain_text, key):
   Assumes the plain text only has letters and spaces and no punctuation.
   '''
   key = key.upper()
+  key = key.replace(" ", "")
   plain_text = plain_text_prep(plain_text)
   letters_list = list(string.ascii_uppercase)
 
