@@ -2,8 +2,5 @@ pandas
 numpy
 streamlit
 tensorflow
-itertools
-collections
-math
-string
-random
+plotly
+plotly.express

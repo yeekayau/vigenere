@@ -10,7 +10,6 @@ from collections import Counter
 import math
 from itertools import chain
 import pandas as pd
-from tqdm import tqdm
 
 import plotly.express as px
 import plotly.graph_objects as go
