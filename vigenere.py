@@ -135,7 +135,7 @@ elif choice == "I already have Vigenere encrypted text":
 		st.header("Key length Prediction by Neural Network")
 
 		# Load the model
-		model = load_model("first_model.h5")
+		model = load_model("al_model_extra_layer.h5")
 
 		top_3, probs = nn.make_prediction_on_single_sample(cipher_text, kb_df, model)
 
