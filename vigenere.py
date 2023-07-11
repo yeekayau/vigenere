@@ -15,7 +15,7 @@ st.sidebar.markdown("This small web application is based on the research project
 
 intro_text2 = st.sidebar.markdown("Notably, some newer statistics from recent literature is included, as well as a neural network.")
 
-intro_text3 = st.sidebar.markdown("This is joint work with Morgan Carns, Christian Millichap, Alyssa Pate and [Yeeka Yau](https://yeekayau.github.io/).")
+intro_text3 = st.sidebar.markdown("This is joint work with [Morgan Carns](https://www.linkedin.com/in/morgan-carns-aa4b26238/), [Christian Millichap](https://sites.google.com/view/christianmillichap/home), Alyssa Pate and [Yeeka Yau](https://yeekayau.github.io/).")
 
 
 choice = st.radio("Pick one", ["Encrypt my plain text with a given key", "I already have Vigenere encrypted text"])
