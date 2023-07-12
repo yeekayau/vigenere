@@ -71,6 +71,10 @@ if choice == "Encrypt my plain text with a given key":
 	####### Display Twist and Twist+ info
 
 		st.header("Twist Index and Twist+")
+
+		with st.expander("Details"):
+			st.markdown("(see the papers [Twisting the Keyword Length from a Vigenère Cipher](https://www.tandfonline.com/doi/full/10.1080/01611194.2014.988365) and [How to improve the twist algorithm](https://www.tandfonline.com/doi/full/10.1080/01611194.2019.1657202) )")
+
 		# twist index numbers
 		tw_nums = [tw.twist_index(cipher_text, i) for i in range(3,26)]
 		# twist plus numbers
@@ -121,6 +125,9 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 	####### Display Twist and Twist+ info
 
 		st.header("Twist Index and Twist+")
+
+		with st.expander("Details"):
+			st.markdown("(see the papers [Twisting the Keyword Length from a Vigenère Cipher](https://www.tandfonline.com/doi/full/10.1080/01611194.2014.988365) and [How to improve the twist algorithm](https://www.tandfonline.com/doi/full/10.1080/01611194.2019.1657202) )")
 
 		# vector of twist index numbers
 		tw_nums = [tw.twist_index(cipher_text, i) for i in range(3,26)]
