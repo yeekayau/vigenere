@@ -38,23 +38,24 @@ if choice == "Encrypt my plain text with a given key":
 
 		st.header("Index of Coincidence")
 
-		st.markdown("The Index of Coincidence is the probability that two letters picked at random from a ciphertext are the same. It is defined as follows:")
+		with st.expander("Details"):
+			st.markdown("The Index of Coincidence is the probability that two letters picked at random from a ciphertext are the same. It is defined as follows:")
 
-		st.latex(r'IC = \frac{1}{{l \choose 2}} \sum_{i = 1}^{26} {n_i \choose 2}')
+			st.latex('IC = \frac{1}{{l \choose 2}} \sum_{i = 1}^{26} {n_i \choose 2}')
 
-		st.latex(r'''where $n_i$ is the number of occurrences of the letter $i$ in the Ciphertext and $l$ is the length of the ciphertext.''')
+			st.latex(r'''where $n_i$ is the number of occurrences of the letter $i$ in the Ciphertext and $l$ is the length of the ciphertext.''')
 
-		st.markdown('**The Key Idea**')
+			st.markdown('**The Key Idea**')
 
-		bullet_points = [
-    					'In a piece of regular English text, $IC \approx 6.5\%$ (0.065).',
-    					'In the Vigenere cipher, $IC$ is lower because a single letter can be encrypted by different letters throughout the ciphertext (the goal of this cipher is so that frequency analysis cannot be used).',
-    					'So the IOC generally tells you whether you have a monoalphabetic cipher or a polyalphabetic cipher.'
-			]
+			bullet_points = [
+	    					'In a piece of regular English text, $IC \approx 6.5\%$ (0.065).',
+	    					'In the Vigen\u00E8re cipher, $IC$ is lower because a single letter can be encrypted by different letters throughout the ciphertext (the goal of this cipher is so that frequency analysis cannot be used).',
+	    					'So the IOC generally tells you whether you have a monoalphabetic cipher or a polyalphabetic cipher.'
+				]
 
-		bullet_list = '\n'.join([f'- {item}' for item in bullet_points])
+			bullet_list = '\n'.join([f'- {item}' for item in bullet_points])
 
-		st.markdown(bullet_list)
+			st.markdown(bullet_list)
 
 		st.text("The Index of Coincidence for the cipher text is: ")
 		ioc = ve.index_of_coincidence(cipher_text)
