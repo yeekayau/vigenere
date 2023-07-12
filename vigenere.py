@@ -87,6 +87,9 @@ if choice == "Encrypt my plain text with a given key":
 
 		st.header("Key length Prediction by Neural Network")
 
+		with st.expander("Details"):
+			st.markdown("We trained a Feed Forward Neural Network with 2 hidden layers of 64 neurons each and 91 input features to predict the key length of a cipher text.")
+
 		# Load the model
 		model = load_model("first_model.h5")
 
