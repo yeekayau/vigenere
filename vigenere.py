@@ -92,7 +92,7 @@ if choice == "Encrypt my plain text with a given key":
 		st.header("Key length Prediction by Neural Network")
 
 		with st.expander("Details"):
-			st.markdown("We trained a Feed Forward Neural Network with 2 hidden layers of 64 neurons each and 91 input features to predict the key length of a cipher text. The network was trained on approximately 500,000 samples of Cipher texts (from books downloaded from the online book repository [www.gutenberg.org](www.gutenberg.org)) between 100 and 500 characters in length, with keys ranging in length from 3 to 25.")
+			st.markdown("We trained a Feed Forward Neural Network with 2 hidden layers of 64 neurons each and 91 input features to predict the key length of a cipher text. The network was trained on approximately 500,000 samples of Cipher texts (from books downloaded from the online book repository [www.gutenberg.org](www.gutenberg.org)) between 100 and 500 characters in length, with keys ranging in length from 3 to 25. The features include various statistics related to the methods described on this webpage, and will be detailed in forthcoming work.")
 
 		# Load the model
 		model = load_model("first_model.h5")
@@ -146,7 +146,7 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 		st.header("Key length Prediction by Neural Network")
 
 		with st.expander("Details"):
-			st.markdown("We trained a Feed Forward Neural Network with 2 hidden layers of 64 neurons each and 91 input features to predict the key length of a cipher text. The network was trained on approximately 500,000 samples of Cipher texts (from books downloaded from the online book repository [www.gutenberg.org](www.gutenberg.org)) between 100 and 500 characters in length, with keys ranging in length from 3 to 25.")
+			st.markdown("We trained a Feed Forward Neural Network with 2 hidden layers of 64 neurons each and 91 input features to predict the key length of a cipher text. The network was trained on approximately 500,000 samples of Cipher texts (from books downloaded from the online book repository [www.gutenberg.org](www.gutenberg.org)) between 100 and 500 characters in length, with keys ranging in length from 3 to 25. The features include various statistics related to the methods described on this webpage, and will be detailed in forthcoming work.")
 
 		# Load the model
 		model = load_model("al_model_extra_layer.h5")
