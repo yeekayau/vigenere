@@ -169,9 +169,9 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 		ioc
 
 		st.text("Thus, a predicted key length is:")
-		ioc_prediction = ve.ioc_key_length(cipher_text, ioc)
+		ioc_prediction = ve.ioc_key_length(len(cipher_text), ioc)
 		ioc_prediction
-		
+
 	####### Display Kasiski Babbage table
 
 		st.header("Kasiski Babbage Test")
