@@ -46,7 +46,7 @@ if choice == "Encrypt my plain text with a given key":
 					IC = \frac{1}{ \binom{l}{2} }  \sum_{i = 1}^{26} \binom{n_i}{2}
 					''')
 
-			st.latex(r'''where $n_i$ is the number of occurrences of the letter $i$ in the Ciphertext and $l$ is the length of the ciphertext.''')
+			st.markdown("where $n_i$ is the number of occurrences of the letter $i$ in the Ciphertext and $l$ is the length of the ciphertext.")
 
 			st.markdown('**The Key Idea**')
 
@@ -116,8 +116,30 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 	####### Display Index of coincidence
 
 		st.header("Index of Coincidence")
-		ioc = ve.index_of_coincidence(cipher_text)
-		ioc
+
+		with st.expander("Details"):
+
+			st.markdown("The Index of Coincidence is the probability that two letters picked at random from a ciphertext are the same. It is defined as follows:")
+
+			st.latex(r'''
+					IC = \frac{1}{ \binom{l}{2} }  \sum_{i = 1}^{26} \binom{n_i}{2}
+					''')
+
+			st.markdown("where $n_i$ is the number of occurrences of the letter $i$ in the Ciphertext and $l$ is the length of the ciphertext.")
+
+			st.markdown('**The Key Idea**')
+
+
+			bullet_points = [
+    					'In a piece of regular English text, $IC \\approx 6.5\\%$ (0.065).',
+    					'In the Vigenere cipher, $IC$ is lower because a single letter can be encrypted by different letters throughout the ciphertext (the goal of this cipher is so that frequency analysis cannot be used).',
+    					'So the IOC generally tells you whether you have a monoalphabetic cipher or a polyalphabetic cipher.'
+			]
+
+
+			st.text("The Index of Coincidence for the cipher text is: ")
+			ioc = ve.index_of_coincidence(cipher_text)
+			ioc
 
 	####### Display Kasiski Babbage table
 
