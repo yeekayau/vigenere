@@ -11,7 +11,7 @@ import neural_network as nn
 
 st.title("Finding the Key Length of a Vigen\u00E8re Cipher")
 
-st.sidebar.markdown("This small web application is based on the research project **_Finding the key length of a Vigen\u00E8re cipher_** at Furman University. The application allows you to either supply a piece of plain text along with a key, or a piece of Vigen\u00E8re encrypted cipher text. Once input is supplied, the application then displays a number of statistics related to finding the key length of the cipher text.")
+st.sidebar.markdown("This small web application is based on the research project **_Finding the key length of a Vigen\u00E8re cipher_** at Furman University. The application allows you to either supply a piece of plain text along with a key, or a piece of Vigen\u00E8re encrypted cipher text. Once input is supplied, the application displays a number of statistics related to finding the key length of the cipher text.")
 
 intro_text2 = st.sidebar.markdown("Notably, some newer statistics from recent literature is included (see the section on Twist and Twist+). We have also trained a Feed Forward Neural Network to predict the key length (see the section on the Neural Network for details.)")
 
@@ -39,7 +39,7 @@ if choice == "Encrypt my plain text with a given key":
 		st.header("Index of Coincidence")
 
 		with st.expander("Details"):
-			st.markdown("The Index of Coincidence is the probability that two letters picked at random from a ciphertext are the same. It is defined as follows:")
+			st.markdown("The Index of Coincidence (IC) is the probability that two letters picked at random from a ciphertext are the same. It is defined as follows:")
 
 
 			st.latex(r'''
@@ -54,16 +54,26 @@ if choice == "Encrypt my plain text with a given key":
 			bullet_points = [
     					'In a piece of regular English text, $IC \\approx 6.5\\%$ (0.065).',
     					'In Vigen\u00E8re cipher text, the $IC$ is lower because a single letter can be encrypted by different letters throughout the ciphertext (the goal of this cipher is so that frequency analysis cannot be used).',
-    					'So the IOC generally tells you whether you have a monoalphabetic cipher or a polyalphabetic cipher.'
+    					'One can then compare the IC of the cipher text to statistically established values of the IC for texts containing varying numbers of alphabets.'
 			]
 
 			bullet_list = '\n'.join([f'- {item}' for item in bullet_points])
 
 			st.markdown(bullet_list)
 
+			st.markdown("Alternatively, one can also use a formula derived from the IC as a predictor of key length:")
+
+			st.latex(r'''
+					L = \frac{0.028N}{(IC)(N-1)-0.038N + 0.066}
+				''')
+
 		st.text("The Index of Coincidence for the cipher text is: ")
 		ioc = ve.index_of_coincidence(cipher_text)
 		ioc
+
+		st.text("Thus, a predicted key length is:")
+		ioc_prediction = ve.ioc_key_length(cipher_text, ioc)
+		ioc_prediction
 
 	####### Display Kasiski Babbage table
 
@@ -126,8 +136,8 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 		st.header("Index of Coincidence")
 
 		with st.expander("Details"):
+			st.markdown("The Index of Coincidence (IC) is the probability that two letters picked at random from a ciphertext are the same. It is defined as follows:")
 
-			st.markdown("The Index of Coincidence is the probability that two letters picked at random from a ciphertext are the same. It is defined as follows:")
 
 			st.latex(r'''
 					IC = \frac{1}{ \binom{l}{2} }  \sum_{i = 1}^{26} \binom{n_i}{2}
@@ -140,15 +150,28 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 
 			bullet_points = [
     					'In a piece of regular English text, $IC \\approx 6.5\\%$ (0.065).',
-    					'In Vigen\u00E8re cipher text, the $IC$ is lower because a single letter can be encrypted by different letters throughout the cipher text (the goal of this cipher is so that frequency analysis cannot be used).',
-    					'So the IOC generally tells you whether you have a monoalphabetic cipher or a polyalphabetic cipher.'
+    					'In Vigen\u00E8re cipher text, the $IC$ is lower because a single letter can be encrypted by different letters throughout the ciphertext (the goal of this cipher is so that frequency analysis cannot be used).',
+    					'One can then compare the IC of the cipher text to statistically established values of the IC for texts containing varying numbers of alphabets.'
 			]
 
+			bullet_list = '\n'.join([f'- {item}' for item in bullet_points])
 
-			st.text("The Index of Coincidence for the cipher text is: ")
-			ioc = ve.index_of_coincidence(cipher_text)
-			ioc
+			st.markdown(bullet_list)
 
+			st.markdown("Alternatively, one can also use a formula derived from the IC as a predictor of key length:")
+
+			st.latex(r'''
+					L = \frac{0.028N}{(IC)(N-1)-0.038N + 0.066}
+				''')
+
+		st.text("The Index of Coincidence for the cipher text is: ")
+		ioc = ve.index_of_coincidence(cipher_text)
+		ioc
+
+		st.text("Thus, a predicted key length is:")
+		ioc_prediction = ve.ioc_key_length(cipher_text, ioc)
+		ioc_prediction
+		
 	####### Display Kasiski Babbage table
 
 		st.header("Kasiski Babbage Test")

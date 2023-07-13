@@ -84,3 +84,8 @@ def index_of_coincidence(text):
         ioc = numerator / denominator
 
     return ioc
+
+def ioc_key_length(text_length, ioc):
+  '''Computes the guess for key length from IOC.'''
+  return (0.028*text_length)/(ioc*(text_length -1) - 0.038*text_length + 0.066)
+
