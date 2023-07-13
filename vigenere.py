@@ -53,7 +53,7 @@ if choice == "Encrypt my plain text with a given key":
 
 			bullet_points = [
     					'In a piece of regular English text, $IC \\approx 6.5\\%$ (0.065).',
-    					'In the Vigenere cipher, $IC$ is lower because a single letter can be encrypted by different letters throughout the ciphertext (the goal of this cipher is so that frequency analysis cannot be used).',
+    					'In Vigen\u00E8re cipher text, the $IC$ is lower because a single letter can be encrypted by different letters throughout the ciphertext (the goal of this cipher is so that frequency analysis cannot be used).',
     					'So the IOC generally tells you whether you have a monoalphabetic cipher or a polyalphabetic cipher.'
 			]
 
@@ -132,7 +132,7 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 
 			bullet_points = [
     					'In a piece of regular English text, $IC \\approx 6.5\\%$ (0.065).',
-    					'In the Vigenere cipher, $IC$ is lower because a single letter can be encrypted by different letters throughout the ciphertext (the goal of this cipher is so that frequency analysis cannot be used).',
+    					'In Vigen\u00E8re cipher text, the $IC$ is lower because a single letter can be encrypted by different letters throughout the cipher text (the goal of this cipher is so that frequency analysis cannot be used).',
     					'So the IOC generally tells you whether you have a monoalphabetic cipher or a polyalphabetic cipher.'
 			]
 
