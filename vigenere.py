@@ -43,7 +43,7 @@ if choice == "Encrypt my plain text with a given key":
 
 
 			st.latex(r'''
-					IC = \frac{1}{ {l \choose 2} }  \sum_{i = 1}^(26) {n_i \choose 2}
+					IC = \frac{1}{ \binom{l}{2} }  \sum_{i = 1}^{26} \binom{n_i}{2}
 					''')
 
 			st.latex(r'''where $n_i$ is the number of occurrences of the letter $i$ in the Ciphertext and $l$ is the length of the ciphertext.''')
