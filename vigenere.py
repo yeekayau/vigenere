@@ -71,8 +71,8 @@ if choice == "Encrypt my plain text with a given key":
 		ioc = ve.index_of_coincidence(cipher_text)
 		ioc
 
-		st.text("Thus, a predicted key length is:")
-		ioc_prediction = ve.ioc_key_length(cipher_text, ioc)
+		st.text("Thus, the predicted key length by formula is:")
+		ioc_prediction = ve.ioc_key_length(len(cipher_text), ioc)
 		ioc_prediction
 
 	####### Display Kasiski Babbage table
@@ -168,7 +168,7 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 		ioc = ve.index_of_coincidence(cipher_text)
 		ioc
 
-		st.text("Thus, a predicted key length is:")
+		st.text("Thus, the predicted key length by formula is:")
 		ioc_prediction = ve.ioc_key_length(len(cipher_text), ioc)
 		ioc_prediction
 
