@@ -13,9 +13,6 @@ st.title("Finding the Key Length of a Vigen\u00E8re Cipher")
 
 st.sidebar.markdown("This small web application is based on the research project **_Finding the key length of a Vignere cipher_** at Furman University. The application allows you to either supply a piece of plain text along with a key, or a piece of Vigenere encrypted cipher text. Once input is supplied, the application then displays a number of statistics related to finding the key length of the cipher text.")
 
-st.sidebar.markdown("This small web application is based on the research project **_Finding the key length of a Vigen\u00E8re cipher_** at Furman University. The application allows you to either supply a piece of plain text along with a key, or a piece of Vigen\u00E8re encrypted cipher text. The application then displays a number of statistics related to finding the key length of the cipher text.")
-
-
 intro_text2 = st.sidebar.markdown("Notably, some newer statistics from recent literature is included (see the section on Twist and Twist+). We have also trained a Feed Forward Neural Network to predict the key length (see the section on the Neural Network for details.)")
 
 intro_text3 = st.sidebar.markdown("This is joint work with [Morgan Carns](https://www.linkedin.com/in/morgan-carns-aa4b26238/), [Christian Millichap](https://sites.google.com/view/christianmillichap/home), Alyssa Pate and [Yeeka Yau](https://yeekayau.github.io/).")
