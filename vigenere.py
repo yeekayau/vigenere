@@ -11,7 +11,7 @@ import neural_network as nn
 
 st.title("Finding the Key Length of a Vigen\u00E8re Cipher")
 
-st.sidebar.markdown("This small web application is based on the research project **_Finding the key length of a Vignere cipher_** at Furman University. The application allows you to either supply a piece of plain text along with a key, or a piece of Vigenere encrypted cipher text. Once input is supplied, the application then displays a number of statistics related to finding the key length of the cipher text.")
+st.sidebar.markdown("This small web application is based on the research project **_Finding the key length of a Vigen\u00E8re cipher_** at Furman University. The application allows you to either supply a piece of plain text along with a key, or a piece of Vigen\u00E8re encrypted cipher text. Once input is supplied, the application then displays a number of statistics related to finding the key length of the cipher text.")
 
 intro_text2 = st.sidebar.markdown("Notably, some newer statistics from recent literature is included (see the section on Twist and Twist+). We have also trained a Feed Forward Neural Network to predict the key length (see the section on the Neural Network for details.)")
 
@@ -23,7 +23,7 @@ choice = st.radio("Pick one", ["Encrypt my plain text with a given key", "I alre
 if choice == "Encrypt my plain text with a given key":
 
 	plain_text = st.text_area("Enter plain text")
-	key = st.text_input("Enter the key for encryption")
+	key = st.text_input("Enter the key for encryption (do not include any punctuation)")
 
 	if plain_text and key:
 
@@ -69,6 +69,13 @@ if choice == "Encrypt my plain text with a given key":
 
 		st.header("Kasiski Babbage Test")
 
+		with st.expander("Details"):
+			st.markdown("The key idea of the Kasiski-Babbage test is to look for repeated sequences of length 3 or more in the cipher text, with the assumption that a repeated sequence may indicate that some of the same repeated letters of the plain text line up with letters in the key in the same position.")
+			st.markdown("Based on this assumption, the distance between these repeated sequences in the cipher text would then be a multiple of the key length.")
+			st.markdown("This technique appears to be remarkably effective when a cipher text contains repeated sequences. (see the paper [Kasiski's test: Couldn't the Repetitions be by Accident?](https://www.tandfonline.com/doi/full/10.1080/01611190600803819) for some theoretical reasons why this assumption is plausible.)")
+
+		st.markdown("This table displays the repeated sequences found in the Cipher text. The columns indicate the distances apart in which they appeared, and the entries indicate how many times the repeated sequence appeared at those distances.")
+
 		kb_df = kb.kasiski_babbage_df(cipher_text, 'both')
 		kb_df
 
@@ -103,7 +110,8 @@ if choice == "Encrypt my plain text with a given key":
 
 		top_3, probs = nn.make_prediction_on_single_sample(cipher_text, kb_df, model)
 
-		st.text("Here are the top 3 predictions by the neural network and their asscociated probabilities.")
+		st.markdown("Here are the top 3 predictions by the neural network and their asscociated probabilities.")
+
 		*zip(top_3, probs)
 
 #################################################################
@@ -145,6 +153,13 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 
 		st.header("Kasiski Babbage Test")
 
+		with st.expander("Details"):
+			st.markdown("The key idea of the Kasiski-Babbage test is to look for repeated sequences of length 3 or more in the cipher text, with the assumption that a repeated sequence may indicate that some of the same repeated letters of the plain text line up with letters in the key in the same position.")
+			st.markdown("Based on this assumption, the distance between these repeated sequences in the cipher text would then be a multiple of the key length.")
+			st.markdown("This technique appears to be remarkably effective when a cipher text contains repeated sequences. (see the paper [Kasiski's test: Couldn't the Repetitions be by Accident?](https://www.tandfonline.com/doi/full/10.1080/01611190600803819) for some theoretical reasons why this assumption is plausible.)")
+
+		st.markdown("This table displays the repeated sequences found in the Cipher text. The columns indicate the distances apart in which they appeared, and the entries indicate how many times the repeated sequence appeared at those distances.")
+
 		kb_df = kb.kasiski_babbage_df(cipher_text, 'both')
 		kb_df
 
@@ -179,7 +194,8 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 
 		top_3, probs = nn.make_prediction_on_single_sample(cipher_text, kb_df, model)
 
-		st.text("Here are the top 3 predictions by the neural network and their associated probabilities.")
+		st.markdown("Here are the top 3 predictions by the neural network and their associated probabilities.")
+
 		*zip(top_3, probs)
 
 		
