@@ -117,9 +117,9 @@ if choice == "Encrypt my plain text with a given key":
 
 		with st.expander("Deatils of Twist+"):
 
-			st.markdown("Building on the work of Barr and Simoson, Park, Kim, Cho and Yum proposed an extension of the Twist Index called the Twist+")
+			st.markdown("Building on the work of Barr and Simoson, Park, Kim, Cho and Yum proposed an extension of the Twist Index called the Twist+.")
 
-			st.markdown("Their general observation of the Twist Index was the following: For a cipher text $\mathcal{M}$ with key length $m$, the twist index $\mathcal{T}(\mathcal{M}, m) \le \mathcal{T}(\mathcal{M}, \lambda m)$ for $\lambda \in \mathbb{N}^+$, and hence, the guess of the key length using twist metric is more often a multiple of the key length rather than of the key length itself.")
+			st.markdown("Their general observation of the Twist Index was the following: For a cipher text $\mathcal{M}$ with key length $m$, the twist index $\mathcal{T}(\mathcal{M}, m) \le \mathcal{T}(\mathcal{M}, \lambda m)$ for $\lambda \in \mathbb{N}^+$, and hence, the guess of the key length using the twist metric is more often a multiple of the key length rather than of the key length itself.")
 
 			st.markdown("The idea of the twist+ is to look at the twist metric $\mathcal{T}(\mathcal{M}, i)$ for a few key lengths $i$, and find the first one where we have the steepest change in the twist metric. So you compute the following:")
 
@@ -249,9 +249,9 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 
 		with st.expander("Details of Twist+"):
 
-			st.markdown("Building on the work of Barr and Simoson, Park, Kim, Cho and Yum proposed an extension of the Twist Index called the Twist+")
+			st.markdown("Building on the work of Barr and Simoson, Park, Kim, Cho and Yum proposed an extension of the Twist Index called the Twist+.")
 
-			st.markdown("Their general observation of the Twist Index was the following: For a cipher text $\mathcal{M}$ with key length $m$, the twist index $\mathcal{T}(\mathcal{M}, m) \le \mathcal{T}(\mathcal{M}, \lambda m)$ for $\lambda \in \mathbb{N}^+$, and hence, the guess of the key length using twist metric is more often a multiple of the key length rather than of the key length itself.")
+			st.markdown("Their general observation of the Twist Index was the following: For a cipher text $\mathcal{M}$ with key length $m$, the twist index $\mathcal{T}(\mathcal{M}, m) \le \mathcal{T}(\mathcal{M}, \lambda m)$ for $\lambda \in \mathbb{N}^+$, and hence, the guess of the key length using the twist metric is more often a multiple of the key length rather than of the key length itself.")
 
 			st.markdown("The idea of the twist+ is to look at the twist metric $\mathcal{T}(\mathcal{M}, i)$ for a few key lengths $i$, and find the first one where we have the steepest change in the twist metric. So you compute the following:")
 
