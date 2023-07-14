@@ -95,7 +95,7 @@ if choice == "Encrypt my plain text with a given key":
 
 		with st.expander("Details"):
 
-			st.markdown("Let $C = [c_1, c_2, ... , c_{26}]$ be the sorted (least to most) relative frequencies of letters in a text (called the signature of a text)").
+			st.markdown("Let $C = [c_1, c_2, ... , c_{26}]$ be the sorted (least to most) relative frequencies of letters in a text ").
 
 			st.markdown("The *twist* of $C$ is:")
 
@@ -211,7 +211,7 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 
 		with st.expander("Details"):
 
-			st.markdown("Let $C = [c_1, c_2, \ldots , c_{26}]$ be the sorted (least to most) relative frequencies of letters in a text (called the signature of a text)").
+			st.markdown("Let $C = [c_1, c_2, \ldots , c_{26}]$ be the sorted (least to most) relative frequencies of letters in a text ").
 
 			st.markdown("The *twist* of $C$ is:")
 
