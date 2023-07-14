@@ -95,9 +95,9 @@ if choice == "Encrypt my plain text with a given key":
 
 		with st.expander("Details"):
 
-			st.markdown("Let $C =  c_1, c_2, ... , c_{26} $ be the sorted (least to most) relative frequencies of letters in a text ").
+			st.markdown("Let $C =  [c_1, c_2, \dots , c_{26} ]$ be the sorted (least to most) relative frequencies of letters in a text (called the **signature** of the text)")
 
-			st.markdown("The *twist* of $C$ is:")
+			st.markdown("The **twist** of $C$ is:")
 
 			st.latex(r'''
 				 \diamond C = \sum_{i = 14}^{26}c_i - \sum_{i = 1}^{13}c_i 
@@ -107,7 +107,7 @@ if choice == "Encrypt my plain text with a given key":
 
 			st.markdown('The larger this number is, the more closely the signature of the text matches that of regular english (and thus a monoalphabetic cipher). If this number is close to 0, then that indicates a more uniform distribution of letters, suggesting a polyalphabetic cipher.')
 
-			st.markdown('The idea is then to compute the twist of cosets of letters for different guesses at the key length $m$. The largest of the twist metrics (called the *twist index*) should be a candidate for the key length. The Twist of Ciphertext $\mathscr{M}$ with the guess of key length $m$ is:')
+			st.markdown('The idea is then to compute the twist of cosets of letters for different guesses at the key length $m$. The largest of the twist metrics (called the **twist index**) should be a candidate for the key length. The Twist of Ciphertext $\mathscr{M}$ with the guess of key length $m$ is:')
 
 			st.latex(r'''
 				 T(\mathscr{M}, m) = round \big( \frac{100}{m} \sum_{i = 1}^{m} \diamond C \big) 
@@ -211,9 +211,9 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 
 		with st.expander("Details"):
 
-			st.markdown("Let $C =  c_1, c_2, \ldots , c_{26} $ be the sorted (least to most) relative frequencies of letters in a text ").
+			st.markdown("Let $C =  [c_1, c_2, \ldots , c_{26} ]$ be the sorted (least to most) relative frequencies of letters in a text (called the **signature** of a text).")
 
-			st.markdown("The *twist* of $C$ is:")
+			st.markdown("The **twist** of $C$ is:")
 
 			st.latex(r'''
 				 \diamond C = \sum_{i = 14}^{26}c_i - \sum_{i = 1}^{13}c_i 
@@ -223,7 +223,7 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 
 			st.markdown('The larger this number is, the more closely the signature of the text matches that of regular english (and thus a monoalphabetic cipher). If this number is close to 0, then that indicates a more uniform distribution of letters, suggesting a polyalphabetic cipher.')
 
-			st.markdown('The idea is then to compute the twist of cosets of letters for different guesses at the key length $m$. The largest of the twist metrics (called the *twist index*) should be a candidate for the key length. The Twist of Ciphertext $\mathscr{M}$ with the guess of key length $m$ is:')
+			st.markdown('The idea is then to compute the twist of cosets of letters for different guesses at the key length $m$. The largest of the twist metrics (called the **twist index**) should be a candidate for the key length. The Twist of Ciphertext $\mathscr{M}$ with the guess of key length $m$ is:')
 
 			st.latex(r'''
 				 T(\mathscr{M}, m) = round \big( \frac{100}{m} \sum_{i = 1}^{m} \diamond C \big) 
