@@ -93,9 +93,9 @@ if choice == "Encrypt my plain text with a given key":
 
 		st.header("Twist Index and Twist+")
 
-		with st.expander("Details"):
+		with st.expander("Details of the Twist Index"):
 
-			st.markdown("Let $C =  [c_1, c_2, \dots , c_{26} ]$ be the sorted (least to most) relative frequencies of letters in a text (called the **signature** of the text)")
+			st.markdown("Let $C =  [c_1, c_2, \ldots , c_{26} ]$ be the sorted (least to most) relative frequencies of letters in a text (called the **signature** of a text).")
 
 			st.markdown("The **twist** of $C$ is:")
 
@@ -113,7 +113,23 @@ if choice == "Encrypt my plain text with a given key":
 				 T(\mathscr{M}, m) = round \big( \frac{100}{m} \sum_{i = 1}^{m} \diamond C \big) 
 				''')
 
-			st.markdown("(see the papers [Twisting the Keyword Length from a Vigenère Cipher](https://www.tandfonline.com/doi/full/10.1080/01611194.2014.988365) and [How to improve the twist algorithm](https://www.tandfonline.com/doi/full/10.1080/01611194.2019.1657202) ) for further details.")
+			st.markdown("(see the paper [Twisting the Keyword Length from a Vigenère Cipher](https://www.tandfonline.com/doi/full/10.1080/01611194.2014.988365) by Barr and Simoson for further details.")
+
+		with st.expander("Deatils of Twist+"):
+
+			st.markdown("Building on the work of Barr and Simoson, ")
+
+			st.markdown("general observation that for a cipher text $\mathcal{M}$ with key length $m$, the twist index $\mathcal{T}(\mathcal{M}, m) \le \mathcal{T}(\mathcal{M}, \lambda m)$ for $\lambda \in \mathbb{N}^+$, and so often, the guess of the key length using twist metric is more often a multiple of the key length rather than of the key length itself.")
+
+			st.markdown("The idea of the twist+ is to look at the twist metric $\mathcal{T}(\mathcal{M}, i)$ for a few key lengths $i$, and find the first one where we have the steepest change in the twist metric. So you compute the following:")
+
+			st.latex(r'''
+						\mathcal{T}(\mathcal{M}, m)^+ = T'(\mathcal{M}, m) - \frac{1}{m-1}\sum_{\mu = 1}^{m-1}T'(\mathcal{M}, \mu)
+						''')
+
+			st.markdown("where $T'(\mathcal{M}, \mu)$ is the twist index (the largest twist). The last part of this is the average of the twists up to $m-1$.")
+
+			st.markdown("(see the paper [How to improve the twist algorithm](https://www.tandfonline.com/doi/full/10.1080/01611194.2019.1657202) ) for further details.")
 
 		# twist index numbers
 		tw_nums = [tw.twist_index(cipher_text, i) for i in range(3,26)]
@@ -209,7 +225,7 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 
 		st.header("Twist Index and Twist+")
 
-		with st.expander("Details"):
+		with st.expander("Details of the Twist Index"):
 
 			st.markdown("Let $C =  [c_1, c_2, \ldots , c_{26} ]$ be the sorted (least to most) relative frequencies of letters in a text (called the **signature** of a text).")
 
@@ -229,7 +245,23 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 				 T(\mathscr{M}, m) = round \big( \frac{100}{m} \sum_{i = 1}^{m} \diamond C \big) 
 				''')
 
-			st.markdown("(see the papers [Twisting the Keyword Length from a Vigenère Cipher](https://www.tandfonline.com/doi/full/10.1080/01611194.2014.988365) and [How to improve the twist algorithm](https://www.tandfonline.com/doi/full/10.1080/01611194.2019.1657202) ) for further details.")
+			st.markdown("(see the paper [Twisting the Keyword Length from a Vigenère Cipher](https://www.tandfonline.com/doi/full/10.1080/01611194.2014.988365) by Barr and Simoson for further details.")
+
+		with st.expander("Deatils of Twist+"):
+
+			st.markdown("Building on the work of Barr and Simoson, ")
+
+			st.markdown("general observation that for a cipher text $\mathcal{M}$ with key length $m$, the twist index $\mathcal{T}(\mathcal{M}, m) \le \mathcal{T}(\mathcal{M}, \lambda m)$ for $\lambda \in \mathbb{N}^+$, and so often, the guess of the key length using twist metric is more often a multiple of the key length rather than of the key length itself.")
+
+			st.markdown("The idea of the twist+ is to look at the twist metric $\mathcal{T}(\mathcal{M}, i)$ for a few key lengths $i$, and find the first one where we have the steepest change in the twist metric. So you compute the following:")
+
+			st.latex(r'''
+						\mathcal{T}(\mathcal{M}, m)^+ = T'(\mathcal{M}, m) - \frac{1}{m-1}\sum_{\mu = 1}^{m-1}T'(\mathcal{M}, \mu)
+						''')
+
+			st.markdown("where $T'(\mathcal{M}, \mu)$ is the twist index (the largest twist). The last part of this is the average of the twists up to $m-1$.")
+
+			st.markdown("(see the paper [How to improve the twist algorithm](https://www.tandfonline.com/doi/full/10.1080/01611194.2019.1657202) ) for further details.")
 
 		# vector of twist index numbers
 		tw_nums = [tw.twist_index(cipher_text, i) for i in range(3,26)]
