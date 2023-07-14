@@ -100,7 +100,7 @@ if choice == "Encrypt my plain text with a given key":
 			st.markdown("The *twist* of $C$ is:")
 
 			st.latex(r'''
-				$$ \diamond C = \sum_{i = 14}^{26}c_i - \sum_{i = 1}^{13}c_i $$
+				 \diamond C = \sum_{i = 14}^{26}c_i - \sum_{i = 1}^{13}c_i 
 				''')
 
 			st.markdown('Roughly, you can visualise this as the difference in the areas of the last 13 trapezoids and the first 13 trapezoids in a sorted relative frequency vector of the 26 letters.')
@@ -110,7 +110,7 @@ if choice == "Encrypt my plain text with a given key":
 			st.markdown('The idea is then to compute the twist of cosets of letters for different guesses at the key length $m$. The largest of the twist metrics (called the *twist index*) should be a candidate for the key length. The Twist of Ciphertext $\mathscr{M}$ with the guess of key length $m$ is:')
 
 			st.latex(r'''
-				$$ T(\mathscr{M}, m) = round \big( \frac{100}{m} \sum_{i = 1}^{m} \diamond C \big) $$
+				 T(\mathscr{M}, m) = round \big( \frac{100}{m} \sum_{i = 1}^{m} \diamond C \big) 
 				''')
 
 			st.markdown("(see the papers [Twisting the Keyword Length from a Vigenère Cipher](https://www.tandfonline.com/doi/full/10.1080/01611194.2014.988365) and [How to improve the twist algorithm](https://www.tandfonline.com/doi/full/10.1080/01611194.2019.1657202) ) for further details.")
@@ -216,7 +216,7 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 			st.markdown("The *twist* of $C$ is:")
 
 			st.latex(r'''
-				$$ \diamond C = \sum_{i = 14}^{26}c_i - \sum_{i = 1}^{13}c_i $$
+				 \diamond C = \sum_{i = 14}^{26}c_i - \sum_{i = 1}^{13}c_i 
 				''')
 
 			st.markdown('Roughly, you can visualise this as the difference in the areas of the last 13 trapezoids and the first 13 trapezoids in a sorted relative frequency vector of the 26 letters.')
@@ -226,7 +226,7 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 			st.markdown('The idea is then to compute the twist of cosets of letters for different guesses at the key length $m$. The largest of the twist metrics (called the *twist index*) should be a candidate for the key length. The Twist of Ciphertext $\mathscr{M}$ with the guess of key length $m$ is:')
 
 			st.latex(r'''
-				$$ T(\mathscr{M}, m) = round \big( \frac{100}{m} \sum_{i = 1}^{m} \diamond C \big) $$
+				 T(\mathscr{M}, m) = round \big( \frac{100}{m} \sum_{i = 1}^{m} \diamond C \big) 
 				''')
 
 			st.markdown("(see the papers [Twisting the Keyword Length from a Vigenère Cipher](https://www.tandfonline.com/doi/full/10.1080/01611194.2014.988365) and [How to improve the twist algorithm](https://www.tandfonline.com/doi/full/10.1080/01611194.2019.1657202) ) for further details.")
