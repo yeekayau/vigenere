@@ -34,7 +34,7 @@ if choice == "Encrypt my plain text with a given key":
 		cipher_text = ve.vigenere_encrypt(plain_text, key.upper())
 		cipher_text
 
-		st.write("The length of your text is: " + str(len(cipher_text)))
+		st.markdown("**The length of your text is (without punctuation and spaces): **" + str(len(cipher_text)))
 
 	####### Display Index of coincidence
 
