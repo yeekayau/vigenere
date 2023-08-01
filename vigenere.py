@@ -165,6 +165,7 @@ if choice == "Encrypt my plain text with a given key":
 elif choice == "I already have Vigen\u00E8re encrypted text":
 
 	cipher_text = st.text_input("Enter your vigenere encrypted text")
+	cipher_text = cipher_text.replace(" ", "")
 
 	if cipher_text:
 
