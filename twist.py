@@ -143,7 +143,7 @@ def twist_doubleplus(vector):
   '''
   k = len(vector)
   twist_doubleplus_vector = [vector[i]-0.5*(vector[i-1] + vector[i+1]) for i in range(1, k-1) ]
-  return_doubleplus_vector
+  return twist_doubleplus_vector
 
 def max_twist_doubleplus(tdp_vector):
   '''Returns the index of the maximal local jump in twist indices. Input is the twist_doubleplus_vector.
@@ -172,22 +172,18 @@ def plot_twist_and_twistplus_twistdouble(cipher_text, guesses, twist_plus_predic
         y0=0,
         x1=twist_plus_prediction,
         y1=100,
-        line=dict(color='red', width=2, dash='dash'),
+        line=dict(color='red', width=2, dash='dash')
+    )
 
-        x2=twist_doubleplus_prediction,
-        y2=0,
-        x3=twist_doubleplus_prediction,
-        y3=100,
+    fig.add_shape(
+        type='line',
+        x0=twist_doubleplus_prediction,
+        y0=0,
+        x1=twist_doubleplus_prediction,
+        y1=100,
         line=dict(color='green', width=2, dash='dash')
+    )
         
-    )
-
-    fig.update_layout(
-        title='Twist Indices',
-        xaxis_title='Guess at the key length',
-        yaxis_title='Twist Index'
-    )
-
     fig.update_layout(
         title='Twist Indices',
         xaxis_title='Guess at the key length',
@@ -213,7 +209,7 @@ def plot_twist_and_twistplus_twistdouble(cipher_text, guesses, twist_plus_predic
                 showarrow=True,
                 arrowhead=7,
                 ax=0,
-                ay=-40
+                ay=-60  # Adjust this value to position the text lower
             )
         ]
     )
