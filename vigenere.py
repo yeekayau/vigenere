@@ -131,18 +131,25 @@ if choice == "Encrypt my plain text with a given key":
 
 			st.markdown("where $T'(\mathcal{M}, \mu)$ is the twist index (the largest twist). The last part of this is the average of the twists up to $m-1$.")
 
+			st.markdown("The domain of the $m$-values we have considered here is: $1 \le m \le 25$.")
+
 			st.markdown("(see the paper [How to improve the twist algorithm](https://www.tandfonline.com/doi/full/10.1080/01611194.2019.1657202) ) for further details.")
 
 		# twist index numbers
-		tw_nums = [tw.twist_index(cipher_text, i) for i in range(3,26)]
+		tw_nums = [tw.twist_index(cipher_text, i) for i in range(1,26)]
 		# twist plus numbers
 		twplus_nums = tw.twist_plus(tw_nums)
 		# max of twist plus numbers
 		twist_plus_prediction = tw.max_twist_plus(twplus_nums)
 
+		# twist double plus numbers
+		tdouble_nums = tw.twist_doubleplus(tw_nums)
+		# max of twist double plus numbers
+		twist_doubleplus_prediction = tw.max_twist_doubleplus(tdouble_nums)
+
 		# chart
 
-		twist_fig = tw.plot_twist_and_twistplus(cipher_text, [i for i in range(3,26)], twist_plus_prediction)
+		twist_fig = tw.plot_twist_and_twistplus(cipher_text, [i for i in range(1,26)], twist_plus_prediction)
 		st.plotly_chart(twist_fig)
 
 	####### Display the prediction by the Neural network

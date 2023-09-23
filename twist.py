@@ -137,15 +137,30 @@ def twist_plus(vector):
   twist_plus_vector = [vector[i]-( (1/i)*sum(vector[j] for j in range(0, i)) ) for i in range(1, k) ]
   return twist_plus_vector
 
+def twist_doubleplus(vector):
+  '''Input is a vector of twist index numbers.
+     Output: Output is the corresponding twist double plus numbers. The output vector has length 2 less than the input vector.
+  '''
+  k = len(vector)
+  twist_doubleplus_vector = [vector[i]-0.5*(vector[i-1] + vector[i+1]) for i in range(1, k-1) ]
+  return_doubleplus_vector
+
+def max_twist_doubleplus(tdp_vector):
+  '''Returns the index of the maximal local jump in twist indices. Input is the twist_doubleplus_vector.
+    This is the predicted key length by twist double plus.
+  '''
+  np_tdp_vector = np.array(tdp_vector)
+  return np.argmax(np_tdp_vector) + 2
+
 def max_twist_plus(tp_vector):
   '''Returns the index of the maximal jump in twist indices. Input is the twist_plus_vector.
     This is the predicted key length by the twist plus.
   '''
   np_tp_vector = np.array(tp_vector)
-  return np.argmax(np_tp_vector) + 4
+  return np.argmax(np_tp_vector) + 2
 
 
-def plot_twist_and_twistplus(cipher_text, guesses, twist_plus_prediction):
+def plot_twist_and_twistplus_twistdouble(cipher_text, guesses, twist_plus_prediction, twist_doubleplus_prediction):
     '''Given a list of guesses of the key length, compute the twist index for each guess and plot them'''
 
     twists = [twist_index(cipher_text, m) for m in guesses]
@@ -157,7 +172,14 @@ def plot_twist_and_twistplus(cipher_text, guesses, twist_plus_prediction):
         y0=0,
         x1=twist_plus_prediction,
         y1=100,
-        line=dict(color='red', width=2, dash='dash')
+        line=dict(color='red', width=2, dash='dash'),
+
+        x2=twist_doubleplus_prediction,
+        y2=0,
+        x3=twist_doubleplus_prediction,
+        y3=100,
+        line=dict(color='green', width=2, dash='dash')
+        
     )
 
     fig.update_layout(
@@ -177,6 +199,17 @@ def plot_twist_and_twistplus(cipher_text, guesses, twist_plus_prediction):
                 xref="x",
                 yref="y",
                 text="Twist+ Prediction",
+                showarrow=True,
+                arrowhead=7,
+                ax=0,
+                ay=-40
+            ),
+            go.layout.Annotation(
+                x=twist_doubleplus_prediction,
+                y=100,
+                xref="x",
+                yref="y",
+                text="Twist++ Prediction",
                 showarrow=True,
                 arrowhead=7,
                 ax=0,
