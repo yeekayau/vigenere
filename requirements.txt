@@ -4,3 +4,4 @@ streamlit
 tensorflow
 plotly
 plotly.express
+protobuf==3.20.*
