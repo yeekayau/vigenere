@@ -149,7 +149,7 @@ if choice == "Encrypt my plain text with a given key":
 
 		# chart
 
-		twist_fig = tw.plot_twist_and_twistplus(cipher_text, [i for i in range(1,26)], twist_plus_prediction)
+		twist_fig = tw.plot_twist_and_twistplus_twistdouble(cipher_text, [i for i in range(1,26)], twist_plus_prediction, twist_doubleplus_prediction)
 		st.plotly_chart(twist_fig)
 
 	####### Display the prediction by the Neural network
