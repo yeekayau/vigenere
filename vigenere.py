@@ -11,9 +11,9 @@ import neural_network as nn
 
 st.title("Finding the Key Length of a Vigen\u00E8re Cipher")
 
-st.sidebar.markdown("This small web application is based on the research project **_Finding the key length of a Vigen\u00E8re cipher_** at Furman University. The application allows you to either supply a piece of plain text along with a key, or a piece of Vigen\u00E8re encrypted cipher text. Once input is supplied, the application displays a number of statistics related to finding the key length of the cipher text.")
+st.sidebar.markdown("This small web application is based on the article **_[Modifying Twist algorithms for finding the key length of a Vigenère Cipher](https://arxiv.org/abs/2309.15240)_**, which began as an undergraduate research project at Furman University, SC, USA. The application allows you to either supply a piece of plain text along with a key, or a piece of Vigen\u00E8re encrypted cipher text. Once input is supplied, the application displays a number of statistics related to finding the key length of the cipher text.")
 
-intro_text2 = st.sidebar.markdown("Notably, some newer statistics from recent literature is included (see the section on Twist and Twist+). We have also trained a Feed Forward Neural Network to predict the key length (see the section on the Neural Network for details.)")
+intro_text2 = st.sidebar.markdown("Notably, some newer statistics from recent literature is included (see the section on Twist and Twist+). We have also included a new metric, the Twist++ from our paper [Modifying Twist algorithms for finding the key length of a Vigenère Cipher](https://arxiv.org/abs/2309.15240).)")
 
 intro_text3 = st.sidebar.markdown("This is joint work with [Morgan Carns](https://www.linkedin.com/in/morgan-carns-aa4b26238/), [Christian Millichap](https://sites.google.com/view/christianmillichap/home), Alyssa Pate and [Yeeka Yau](https://yeekayau.github.io/). For any comments or questions about this application, please contact Yeeka Yau.")
 
@@ -133,7 +133,25 @@ if choice == "Encrypt my plain text with a given key":
 
 			st.markdown("The domain of the $m$-values we have considered here is: $1 \le m \le 25$.")
 
-			st.markdown("(see the paper [How to improve the twist algorithm](https://www.tandfonline.com/doi/full/10.1080/01611194.2019.1657202) ) for further details.")
+			st.markdown("(see the paper [How to improve the twist algorithm](https://www.tandfonline.com/doi/full/10.1080/01611194.2019.1657202) ) for further details.)")
+
+			############################
+
+		with st.expander("Details of Twist++"):
+
+			st.markdown("In our work, we build on the work of Barr and Simoson and Park, Kim, Cho and Yum. We propose a further extension of the Twist based algorithms called the Twist++.")
+
+			st.markdown("The idea of the twist++ is to look locally at the twist metric $\mathcal{T}(\mathcal{M}, m)$ (rather than compare $\mathcal{T}(\mathcal{M}, m)$ to all values of $\mathcal{T}(\mathcal{M}, k)$ for $k < m$, and find the $m$where we have the steepest local change in the twist metric. We compute the following:")
+
+			st.latex(r'''
+						T^{++}(\mathcal{M}, m) = T(\mathcal{M},m) - \frac{1}{2} \Big(T(\mathcal{M}, m-1) + T(\mathcal{M}, m+1)\Big)
+						''')
+
+			st.markdown("The Twist++ algorithm then predicts the key length to be the maximum of $T^{++}(\mathcal{M}, m)$.")
+
+			st.markdown("The domain of the $m$-values we have considered here is: $1 \le m \le 25$.")
+
+			st.markdown("(see the paper [Modifying Twist algorithms for finding the key length of a Vigenère Cipher](https://arxiv.org/abs/2309.15240) for further details.)")
 
 		# twist index numbers
 		tw_nums = [tw.twist_index(cipher_text, i) for i in range(1,26)]
@@ -154,19 +172,19 @@ if choice == "Encrypt my plain text with a given key":
 
 	####### Display the prediction by the Neural network
 
-		st.header("Key length Prediction by a Neural Network")
+		#st.header("Key length Prediction by a Neural Network")
 
-		with st.expander("Details"):
-			st.markdown("We trained a Feed Forward Neural Network with 2 hidden layers of 64 neurons each and 91 input features to predict the key length of a cipher text. The network was trained on approximately 500,000 samples of Cipher texts (from books downloaded from the online book repository [www.gutenberg.org](www.gutenberg.org)) between 100 and 500 characters in length, with keys ranging in length from 3 to 25. The features include various statistics related to the methods described on this webpage, and will be detailed in forthcoming work.")
+		#with st.expander("Details"):
+		#	st.markdown("We trained a Feed Forward Neural Network with 2 hidden layers of 64 neurons each and 91 input features to predict the key length of a cipher text. The network was trained on approximately 500,000 samples of Cipher texts (from books downloaded from the online book repository [www.gutenberg.org](www.gutenberg.org)) between 100 and 500 characters in length, with keys ranging in length from 3 to 25. The features include various statistics related to the methods described on this webpage, and will be detailed in forthcoming work.")
 
 		# Load the model
-		model = load_model("first_model.h5")
+		#model = load_model("first_model.h5")
 
-		top_3, probs = nn.make_prediction_on_single_sample(cipher_text, kb_df, model)
+		#top_3, probs = nn.make_prediction_on_single_sample(cipher_text, kb_df, model)
 
-		st.markdown("Here are the top 3 predictions by the neural network and their asscociated probabilities.")
+		#st.markdown("Here are the top 3 predictions by the neural network and their asscociated probabilities.")
 
-		*zip(top_3, probs)
+		#*zip(top_3, probs)
 
 #################################################################
 elif choice == "I already have Vigen\u00E8re encrypted text":
@@ -271,7 +289,25 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 
 			st.markdown("where $T'(\mathcal{M}, \mu)$ is the twist index (the largest twist). The last part of this is the average of the twists up to $m-1$.")
 
-			st.markdown("(see the paper [How to improve the twist algorithm](https://www.tandfonline.com/doi/full/10.1080/01611194.2019.1657202) ) for further details.")
+			st.markdown("(see the paper [How to improve the twist algorithm](https://www.tandfonline.com/doi/full/10.1080/01611194.2019.1657202) ) for further details.)")
+
+			##################################
+
+		with st.expander("Details of Twist++"):
+
+			st.markdown("In our work, we build on the work of Barr and Simoson and Park, Kim, Cho and Yum. We propose a further extension of the Twist based algorithms called the Twist++.")
+
+			st.markdown("The idea of the twist++ is to look locally at the twist metric $\mathcal{T}(\mathcal{M}, m)$ (rather than compare $\mathcal{T}(\mathcal{M}, m)$ to all values of $\mathcal{T}(\mathcal{M}, k)$ for $k < m$, and find the $m$where we have the steepest local change in the twist metric. We compute the following:")
+
+			st.latex(r'''
+						T^{++}(\mathcal{M}, m) = T(\mathcal{M},m) - \frac{1}{2} \Big(T(\mathcal{M}, m-1) + T(\mathcal{M}, m+1)\Big)
+						''')
+
+			st.markdown("The Twist++ algorithm then predicts the key length to be the maximum of $T^{++}(\mathcal{M}, m)$.")
+
+			st.markdown("The domain of the $m$-values we have considered here is: $1 \le m \le 25$.")
+
+			st.markdown("(see the paper [Modifying Twist algorithms for finding the key length of a Vigenère Cipher](https://arxiv.org/abs/2309.15240) for further details.)")
 
 		# twist index numbers
 		tw_nums = [tw.twist_index(cipher_text, i) for i in range(1,26)]
@@ -292,19 +328,19 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 
 	####### Display the prediction by the Neural network
 
-		st.header("Key length Prediction by a Neural Network")
+		#st.header("Key length Prediction by a Neural Network")
 
-		with st.expander("Details"):
-			st.markdown("We trained a Feed Forward Neural Network with 2 hidden layers of 64 neurons each and 91 input features to predict the key length of a cipher text. The network was trained on approximately 500,000 samples of Cipher texts (from books downloaded from the online book repository [www.gutenberg.org](www.gutenberg.org)) between 100 and 500 characters in length, with keys ranging in length from 3 to 25. The features include various statistics related to the methods described on this webpage, and will be detailed in forthcoming work.")
+		#with st.expander("Details"):
+		#	st.markdown("We trained a Feed Forward Neural Network with 2 hidden layers of 64 neurons each and 91 input features to predict the key length of a cipher text. The network was trained on approximately 500,000 samples of Cipher texts (from books downloaded from the online book repository [www.gutenberg.org](www.gutenberg.org)) between 100 and 500 characters in length, with keys ranging in length from 3 to 25. The features include various statistics related to the methods described on this webpage, and will be detailed in forthcoming work.")
 
 		# Load the model
-		model = load_model("al_model_extra_layer.h5")
+		#model = load_model("al_model_extra_layer.h5")
 
-		top_3, probs = nn.make_prediction_on_single_sample(cipher_text, kb_df, model)
+		#top_3, probs = nn.make_prediction_on_single_sample(cipher_text, kb_df, model)
 
-		st.markdown("Here are the top 3 predictions by the neural network and their associated probabilities.")
+		#st.markdown("Here are the top 3 predictions by the neural network and their associated probabilities.")
 
-		*zip(top_3, probs)
+		#*zip(top_3, probs)
 
 		
 
