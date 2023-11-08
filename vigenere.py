@@ -141,7 +141,7 @@ if choice == "Encrypt my plain text with a given key":
 
 			st.markdown("In our work, we build on the work of Barr and Simoson and Park, Kim, Cho and Yum. We propose a further extension of the Twist based algorithms called the Twist++.")
 
-			st.markdown("The idea of the twist++ is to look locally at the twist metric $\mathcal{T}(\mathcal{M}, m)$ (rather than compare $\mathcal{T}(\mathcal{M}, m)$ to all values of $\mathcal{T}(\mathcal{M}, k)$ for $k < m$, and find the $m$where we have the steepest local change in the twist metric. We compute the following:")
+			st.markdown("The idea of the twist++ is to look locally at the twist metric $\mathcal{T}(\mathcal{M}, m)$ (rather than compare $\mathcal{T}(\mathcal{M}, m)$ to all values of $\mathcal{T}(\mathcal{M}, k)$ for $k < m$, and find the number $m$ where we have the steepest local change in the twist metric. We compute the following:")
 
 			st.latex(r'''
 						T^{++}(\mathcal{M}, m) = T(\mathcal{M},m) - \frac{1}{2} \Big(T(\mathcal{M}, m-1) + T(\mathcal{M}, m+1)\Big)
@@ -297,7 +297,7 @@ elif choice == "I already have Vigen\u00E8re encrypted text":
 
 			st.markdown("In our work, we build on the work of Barr and Simoson and Park, Kim, Cho and Yum. We propose a further extension of the Twist based algorithms called the Twist++.")
 
-			st.markdown("The idea of the twist++ is to look locally at the twist metric $\mathcal{T}(\mathcal{M}, m)$ (rather than compare $\mathcal{T}(\mathcal{M}, m)$ to all values of $\mathcal{T}(\mathcal{M}, k)$ for $k < m$, and find the $m$where we have the steepest local change in the twist metric. We compute the following:")
+			st.markdown("The idea of the twist++ is to look locally at the twist metric $\mathcal{T}(\mathcal{M}, m)$ (rather than compare $\mathcal{T}(\mathcal{M}, m)$ to all values of $\mathcal{T}(\mathcal{M}, k)$ for $k < m$, and find the number $m$ where we have the steepest local change in the twist metric. We compute the following:")
 
 			st.latex(r'''
 						T^{++}(\mathcal{M}, m) = T(\mathcal{M},m) - \frac{1}{2} \Big(T(\mathcal{M}, m-1) + T(\mathcal{M}, m+1)\Big)
